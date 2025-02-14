@@ -1,0 +1,27 @@
+*.toc
+*.bbl
+*.out
+*.log
+*.blg
+*.bcf
+*.run.xml
+*.bak
+*.sav
+*.aux
+*.synctex.gz
+.dropbox
+.DS_Store
+*.fdb_latexmk
+*.latexmain
+*.fls
+*.rda
+*.dvi
+*.rda
+*.fff
+*.rds
+*.zip
+.Rproj.user
+*.toc
+.vscode/
+
+/*.pdf  # Ignore all PDFs in the root directory

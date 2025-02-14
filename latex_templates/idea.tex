@@ -1,0 +1,66 @@
+% !TEX root
+\documentclass[12pt, headinclude=true]{scrartcl}
+
+\usepackage{lmodern}
+\usepackage{babel} 
+
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{bm}
+\usepackage{algorithm}
+
+\usepackage{subfig}
+\usepackage{wrapfig}
+
+\usepackage{todonotes} 
+\newcommand{\tv}[1]{\todo[inline, color=HEGlightgray]{#1}}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks   = true,
+	urlcolor     = HEGorange,
+	linkcolor    = HEGblue,
+	citecolor   = HEGblue
+}
+\usepackage[noabbrev, capitalize,nameinlink]{cleveref}
+\usepackage[round, comma]{natbib}
+
+% \input{../latex_templates/layout.tex}
+\input{../latex_templates/heg-colors.tex}
+\input{../latex_templates/microtype.tex}
+\input{../latex_templates/theorems.tex} 
+
+\input{../latex_shortcuts/math.tex}
+\input{../latex_shortcuts/stats.tex}
+\input{../latex_shortcuts/tex.tex} 
+ 
+
+%------------------------------------------------------------------------------%
+
+\title{My idea}
+\author{Thibault Vatter\\ University of Applied Sciences Western Switzerland}
+
+
+\begin{document}
+
+\maketitle
+
+Test \citep{vatter2015generalized}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{../figures/popularity_vine_software.png}
+  \caption{A placeholder figure.}
+  \label{fig:placeholder}
+\end{figure}
+
+\tv{This is a todo note.}
+
+\bibliographystyle{apalike}
+\bibliography{../latex_templates/thibault}
+
+\end{document}

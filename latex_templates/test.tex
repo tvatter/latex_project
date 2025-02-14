@@ -1,0 +1,91 @@
+\documentclass[11pt]{beamer}
+\usepackage[french]{babel}
+
+\usepackage{bm}
+\usepackage{dsfont}
+
+% \input{../latex_shortcuts/math.tex}
+% \input{../latex_shortcuts/tex.tex}
+
+\usepackage{../latex_templates/beamerthemeHEG}
+
+\titlegraphic{\includegraphics[width=3cm]{../latex_templates/heg-logo-haute-res-transp.png}}
+
+
+\title{Title}
+\institute{University of Applied Sciences Western Switzerland}
+\date{\today}
+\author[T.~Vatter]{Thibault Vatter \texttt{<tvatter@hesge.ch>}}
+
+
+\begin{document}
+
+%--------------- title page -------------------------%	
+
+{ % these braces make the change local to the single frame
+\setbeamertemplate{headline}{} 
+\setbeamertemplate{footline}{} 
+\begin{frame}[noframenumbering] 
+	\titlepage
+\end{frame}
+}
+
+%-----------------------------------------------------%	
+
+\begin{frame}{Agenda}
+	\tableofcontents
+\end{frame}
+
+%----------------------------%	
+
+\section{Theme}
+
+%----------------------------%	
+
+\begin{frame}{Title}
+
+	\begin{itemize}
+		\item asdf \cred{asdf} 
+		\item  \textbf{asdf} \cbred{asdf} 
+		\item[\cmark] Yes
+	\end{itemize}
+\end{frame}
+
+%----------------------------%	
+
+\section{Theme 2}
+
+\begin{frame}{Title}
+
+	\heading{Headline}
+
+
+	\begin{block}{Free text}
+		test
+	\end{block}
+
+  \begin{example}[asdf]
+		test
+	\end{example}
+
+	\begin{theorem}[asdf]
+		test
+	\end{theorem}
+
+\end{frame}
+
+%----------------------------%	
+
+\begin{frame}
+	\frametitle{Quiz}
+	\setbeamertemplate{enumerate item}{\Alph{enumi}.}
+
+	\begin{enumerate}
+		\item Answer 1
+		\item Answer 2
+		\item Answer 3 \onslide<2->{\cmark}
+	\end{enumerate}
+
+\end{frame}
+
+\end{document}

@@ -1,0 +1,223 @@
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz, datetime, textpos, mdframed, pgf}
+
+% tikz settings for table of contents
+\usetikzlibrary{shapes,arrows}
+\tikzset{section number/.style={
+		draw=none,
+		rectangle,    
+		left color=HEGblue,
+		right color=HEGblue,
+		minimum size=1.5em,
+		text=white,
+	},
+	section/.style={
+		draw=none,
+		rectangle,    
+		minimum height=1.5em,
+		minimum width=0.9\textwidth,
+		text width=0.9\textwidth,
+		text=HEGblue,
+		align=left
+	}
+}
+
+
+
+% Date format
+\ddmmyyyydate \renewcommand{\dateseparator}{.}
+
+% Define colors
+\input{heg-colors.tex}
+
+% set colors
+\setbeamercolor*{item}{fg=HEGblue}
+\setbeamercolor*{subitem}{fg=HEGblue}
+\setbeamercolor*{subsubitem}{fg=HEGred}
+\setbeamercolor*{title}{fg=HEGblue}
+\setbeamercolor*{enumerate item}{fg=HEGblue}
+\setbeamercolor*{enumerate subitem}{fg=HEGblue}
+\setbeamercolor*{enumerate subsubitem}{fg=HEGred}
+\setbeamercolor*{block title}{fg=white, bg=HEGorange}
+\setbeamercolor*{block body}{fg=HEGgray, bg=HEGlightgray}
+\setbeamercolor*{block title example}{fg=white, bg=HEGblue}
+\setbeamercolor*{block body example}{fg=HEGgray, bg=HEGlightgray}
+\setbeamercolor*{section in head/foot}{bg=white, fg=white}
+\setbeamercolor*{subsection in head/foot}{bg=wwhite, fg=white}
+\setbeamercolor*{title in head/foot}{bg=white, fg=white}
+\setbeamercolor*{date in head/foot}{bg=HEGorange, fg=white}
+\setbeamercolor*{frametitle continuation}{fg=HEGblue}
+\setbeamercolor{normal text}{fg=HEGgray}
+
+% set fonts
+\setbeamerfont*{title}{size=\huge}
+\setbeamerfont*{subtitle}{size=\Large\normalfont\slshape}
+\setbeamerfont*{block title}{size=\bfseries}
+
+% other templates
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize subsubitem}[triangle]
+\setbeamertemplate{itemize/enumerate subbody begin}{\normalsize}
+\setbeamertemplate{itemize/enumerate subsubbody begin}{\normalsize}
+\setbeamertemplate{theorems}[unnumbered] 
+
+
+\defbeamertemplate*{background}{HEG}
+{
+	\begin{tikzpicture}
+	\useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight); 
+	\ifnum\thepage>1\relax% Not the title page
+	\fill[color=HEGblue] (0,8.4) rectangle(0.8,8.42);
+	\fill[color=HEGblue] (0.9,8.4) rectangle(13.5, 8.42);
+	\else% Title page
+	\fill[color=HEGblue] (0,-1) rectangle (\the\paperwidth,3.2);
+	\fi
+	\end{tikzpicture}
+}
+
+% define headline
+\defbeamertemplate*{headline}{HEG}{}
+
+% define footline
+\defbeamertemplate*{footline}{HEG}
+{
+	\hfill \textcolor{HEGblue}{\insertframenumber{} / \inserttotalframenumber} \hspace{1pt}
+	\vskip4pt%
+}	
+% positioning of logo
+
+
+% define title page
+\defbeamertemplate*{title page}{HEG}[1][]
+{ 
+	\begin{tikzpicture}
+
+\node[anchor=north west,yshift=-0.3cm] at (0,0) {\hspace*{-0.5cm} \inserttitlegraphic};
+
+\node[anchor=west,text width=1.1\textwidth,align=left] at (0,-4.2) {
+	\hspace*{-0.4cm}\LARGE\color{HEGgray}{\inserttitle}
+};
+\node[anchor=west,text width=1.1\textwidth,align=left] at (0,-5.2) {
+	\Large\normalfont\slshape\insertsubtitle
+};
+
+\node[anchor=west] at (0,-8.2){\hspace*{-0.4cm}\textcolor{white}\insertinstitute};
+\node[anchor=west] at (0,-8.7){\hspace*{-0.4cm}\textcolor{white}{\insertauthor}};
+\node[anchor=west] at (\textheight,0){~};
+
+	\end{tikzpicture}
+}
+
+% page at beginning of section
+\AtBeginSection[]{
+	\setbeamercolor{section in toc}{fg=HEGblue}
+	\setbeamercolor{subsection in toc}{fg=HEGlightgreen}
+	\setcounter{tocdepth}{2}  
+	\frame{\frametitle{Agenda}
+		\tableofcontents[currentsection, hideallsubsections]}
+}
+
+% define section page
+\setbeamertemplate{section page}
+{
+	\begin{centering}
+		{\usebeamerfont{subsubsection name}\usebeamercolor[fg]{subsubsection name}\subsubsectionname~\insertsubsubsectionnumber}
+		\vskip1em\par
+		\begin{beamercolorbox}[sep=4pt,center]{part title}
+			\usebeamerfont{subsubsection title}\insertsubsubsection\par
+		\end{beamercolorbox}
+	\end{centering}
+}
+
+
+\setbeamertemplate{section in toc}{
+	\tikz[baseline=-0.5ex]\node[section number]{\inserttocsectionnumber};%
+	\tikz[baseline=-0.5ex]\node[section]{\inserttocsection};
+}
+
+%% frame title
+%\defbeamertemplate*{frametitle}{HEG}
+%{
+%	\vspace{0.2cm}
+%	\begin{beamercolorbox}{frametitle} 
+%		{\normalsize\color{HEGblue}{\insertsectionnumber~ \insertsection}} \\[-0.2cm]
+%		{\small\color{HEGorange}{\insertsectionnumber.\insertsubsectionnumber~ \insertsubsection}}
+%	\end{beamercolorbox}
+%	
+%}
+
+% frame title
+\defbeamertemplate*{frametitle}{HEG}[1][]
+{
+	\vspace{0.2cm}
+	\ifx\insertframesubtitle\empty
+	\begin{beamercolorbox}{frametitle} 
+		{\Large\color{HEGblue}{\bfseries\insertframetitle}}
+	\end{beamercolorbox}
+	\else \begin{beamercolorbox}{frametitle} 
+		{\Large\color{HEGblue}{\bfseries\insertframetitle}} \\[-0.2cm]
+		{\small\color{HEGorange}{\insertframesubtitle}}
+	\end{beamercolorbox}
+	\fi
+}
+
+% new theorem environment
+\setbeamertemplate{theorem begin}
+{%
+	\setbeamercolor{block title}{use=structure,fg=white,bg=HEGblue}
+	\setbeamercolor{block body}{use=structure,fg=HEGgray,bg=HEGlightgray}
+	\begin{\inserttheoremblockenv}
+		{%
+			\inserttheoremheadfont
+			\inserttheoremname 
+			\ifx\inserttheoremaddition\@empty\else\ (\inserttheoremaddition)\fi%
+		}%		
+	}
+	\setbeamertemplate{theorem end}{\end{\inserttheoremblockenv}}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{beispiel}[theorem]{Beispiel}
+
+
+\setbeamertemplate{proof begin}
+{%
+	\setbeamercolor{block title}{use=structure,fg=HEGblue,bg=white}
+	\setbeamercolor{block body}{use=structure,fg=HEGgray,bg=white}
+	\begin{block}{{\normalfont\sl Proof.}}		
+	}
+	\setbeamertemplate{proof end}{\end{block}}
+
+\setbeamertemplate{qed symbol}{\textcolor{HEGblue}{$\square$}}
+
+% bibliography style
+\setbeamertemplate{bibliography item}{}
+\setbeamercolor*{bibliography entry article}{fg=black}
+\setbeamercolor*{bibliography entry title}{fg=black}
+\setbeamercolor*{bibliography entry note}{fg=black}
+\setbeamercolor*{bibliography entry location}{fg=HEGorange}
+\setbeamercolor*{bibliography entry author}{fg=HEGblue}
+
+% bigger spacing in itemize
+\let\olditemize=\itemize 
+\let\endolditemize=\enditemize 
+\renewenvironment{itemize}{\olditemize \vspace{0.5em} \itemsep1.0em}{\endolditemize}
+\let\oldenumerate=\enumerate 
+\let\endoldenumerate=\endenumerate
+\renewenvironment{enumerate}{\oldenumerate \vspace{0.5em} \itemsep0.7em}{\endoldenumerate \vspace{0.5em}}
+
+
+\usepackage{appendixnumberbeamer}
+
+% check mark symbol
+\usepackage{pifont}
+\newcommand{\cmark}{\cbblue{\text{\ding{51}}}}
+
+% hide switch to exclude stuff pre-lecture
+\def\prelecture{1}
+\newcommand{\hide}[1]{\ifnum\prelecture=0 #1 \fi}
+
+\mode<all>
