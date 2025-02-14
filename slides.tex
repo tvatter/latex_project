@@ -4,12 +4,14 @@
 \usepackage{bm}
 \usepackage{dsfont}
 
-% \input{../latex_shortcuts/math.tex}
-% \input{../latex_shortcuts/tex.tex}
+% \input{latex_shortcuts/math.tex}
+% \input{latex_shortcuts/tex.tex}
 
-\usepackage{../latex_templates/beamerthemeHEG}
+\input{latex_templates/heg-colors.tex}
 
-\titlegraphic{\includegraphics[width=3cm]{../latex_templates/heg-logo-haute-res-transp.png}}
+\usepackage{latex_templates/beamerthemeHEG}
+
+\titlegraphic{\includegraphics[width=3cm]{latex_templates/heg-logo-haute-res-transp.png}}
 
 
 \title{Title}
@@ -49,6 +51,18 @@
 		\item  \textbf{asdf} \cbred{asdf} 
 		\item[\cmark] Yes
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Title}
+
+  \citep{vatter2015generalized}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/popularity_vine_software.png}
+    \caption{A placeholder figure.}
+    \label{fig:placeholder}
+  \end{figure}
+
 \end{frame}
 
 %----------------------------%	

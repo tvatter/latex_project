@@ -23,5 +23,8 @@
 .Rproj.user
 *.toc
 .vscode/
+*.nav
+*.snm
 
-/*.pdf  # Ignore all PDFs in the root directory
+idea.pdf
+slides.pdf
