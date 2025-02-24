@@ -4,6 +4,9 @@
 \usepackage{bm}
 \usepackage{dsfont}
 
+\usepackage[noabbrev, capitalize,nameinlink]{cleveref}
+\usepackage[round, comma]{natbib}
+
 % \input{latex_shortcuts/math.tex}
 % \input{latex_shortcuts/tex.tex}
 
@@ -56,6 +59,7 @@
 \begin{frame}{Title}
 
   \citep{vatter2015generalized}
+
   \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/popularity_vine_software.png}
@@ -100,6 +104,12 @@
 		\item Answer 3 \onslide<2->{\cmark}
 	\end{enumerate}
 
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{References}
+  \bibliographystyle{apalike}
+  \bibliography{thibault}
 \end{frame}
 
 \end{document}
